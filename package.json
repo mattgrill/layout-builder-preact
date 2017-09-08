@@ -1,0 +1,61 @@
+{
+  "name": "layout-builder-preact",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Matthew Grill <matt.grill@acquia.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch:js": "NODE_ENV='development' ./node_modules/.bin/webpack --watch --config webpack.config.js",
+    "build:js": "NODE_ENV='production' ./node_modules/.bin/webpack --config webpack.config.js",
+    "lint:js": "./node_modules/.bin/eslint src/**/*",
+    "serve": "./node_modules/.bin/serve -c 0 dist"
+  },
+  "dependencies": {
+    "glamor": "^2.20.40",
+    "preact": "^8.2.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.3.0",
+    "serve": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.6"
+  },
+  "babel": {
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-class-properties",
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ]
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          }
+        }
+      ]
+    ]
+  }
+}

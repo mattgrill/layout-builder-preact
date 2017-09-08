@@ -1,0 +1,228 @@
+[{
+    "layout": "layout_onecol",
+    "layout_settings": [
+
+    ],
+    "section": [
+
+    ],
+    "layout_definition": {
+      "region_names": [
+        "content"
+      ],
+      "deriver": null,
+      "label": "One column",
+      "description": null,
+      "category": "Columns: 1",
+      "template": "layout--onecol",
+      "templatePath": "core\/modules\/layout_discovery\/layouts\/onecol",
+      "theme_hook": "layout__onecol",
+      "path": "core\/modules\/layout_discovery\/layouts\/onecol",
+      "library": "layout_discovery\/onecol",
+      "icon": null,
+      "icon_map": [
+        [
+          "content"
+        ]
+      ],
+      "regions": {
+        "content": {
+          "label": "Content"
+        }
+      },
+      "default_region": "content",
+      "additional": [
+
+      ],
+      "id": "layout_onecol",
+      "class": "Drupal\\Core\\Layout\\LayoutDefault",
+      "provider": "layout_discovery",
+      "config_dependencies": {
+        "module": [
+          "layout_discovery"
+        ]
+      }
+    }
+  },
+  {
+    "layout": "layout_twocol",
+    "layout_settings": [
+
+    ],
+    "section": {
+      "top": {
+        "997cc0ab-4d74-4f91-80c5-6c6848c34232": {
+          "block": {
+            "id": "block_content:24956c04-6d3d-4484-94ec-33bd1271d359",
+            "label": "My cool block",
+            "provider": "block_content",
+            "label_display": "visible",
+            "status": true,
+            "info": "",
+            "view_mode": "full",
+            "uuid": "997cc0ab-4d74-4f91-80c5-6c6848c34232",
+            "context_mapping": [
+
+            ]
+          },
+          "html": "<div class=\"settings-tray-editable block block-block-content block-block-content24956c04-6d3d-4484-94ec-33bd1271d359\" data-drupal-settingstray=\"editable\">\n  \n      <h2>My cool block<\/h2>\n    \n      <div class=\"content\">\n      \n            <div data-quickedit-field-id=\"block_content\/1\/body\/en\/full\" class=\"clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item\"><blockquote>\n<p>My pullquote<\/p>\n<\/blockquote><\/div>\n      \n    <\/div>\n  <\/div>\n"
+        }
+      }
+    },
+    "layout_definition": {
+      "region_names": [
+        "top",
+        "first",
+        "second",
+        "bottom"
+      ],
+      "deriver": null,
+      "label": "Two column",
+      "description": null,
+      "category": "Columns: 2",
+      "template": "layout--twocol",
+      "templatePath": "core\/modules\/layout_discovery\/layouts\/twocol",
+      "theme_hook": "layout__twocol",
+      "path": "core\/modules\/layout_discovery\/layouts\/twocol",
+      "library": "layout_discovery\/twocol",
+      "icon": null,
+      "icon_map": [
+        [
+          "top"
+        ],
+        [
+          "first",
+          "second"
+        ],
+        [
+          "bottom"
+        ]
+      ],
+      "regions": {
+        "top": {
+          "label": "Top"
+        },
+        "first": {
+          "label": "First"
+        },
+        "second": {
+          "label": "Second"
+        },
+        "bottom": {
+          "label": "Bottom"
+        }
+      },
+      "default_region": "first",
+      "additional": [
+
+      ],
+      "id": "layout_twocol",
+      "class": "Drupal\\Core\\Layout\\LayoutDefault",
+      "provider": "layout_discovery",
+      "config_dependencies": {
+        "module": [
+          "layout_discovery"
+        ]
+      }
+    }
+  },
+  {
+    "layout": "layout_threecol_33_34_33",
+    "layout_settings": [
+
+    ],
+    "section": {
+      "first": {
+        "24e07e69-7cd1-43ba-af6e-2d2db5fb43c3": {
+          "block": {
+            "id": "system_powered_by_block",
+            "label": "Powered by Drupal5",
+            "provider": "system",
+            "label_display": "visible",
+            "uuid": "24e07e69-7cd1-43ba-af6e-2d2db5fb43c3",
+            "context_mapping": [
+
+            ]
+          },
+          "html": "<div class=\"settings-tray-editable block block-system block-system-powered-by-block\" data-drupal-settingstray=\"editable\" role=\"complementary\">\n  \n      <h2>Powered by Drupal5<\/h2>\n    \n      <div class=\"content\">\n      <span>Powered by <a href=\"https:\/\/www.drupal.org\">Drupal<\/a><\/span>\n    <\/div>\n  <\/div>\n"
+        }
+      },
+      "third": {
+        "6bb1301d-830a-43f3-af9b-02c821e08bd2": {
+          "block": {
+            "id": "system_powered_by_block",
+            "label": "Powered by Drupal2",
+            "provider": "system",
+            "label_display": "visible",
+            "uuid": "6bb1301d-830a-43f3-af9b-02c821e08bd2",
+            "context_mapping": [
+
+            ]
+          },
+          "html": "<div class=\"settings-tray-editable block block-system block-system-powered-by-block\" data-drupal-settingstray=\"editable\" role=\"complementary\">\n  \n      <h2>Powered by Drupal2<\/h2>\n    \n      <div class=\"content\">\n      <span>Powered by <a href=\"https:\/\/www.drupal.org\">Drupal<\/a><\/span>\n    <\/div>\n  <\/div>\n"
+        }
+      }
+    },
+    "layout_definition": {
+      "region_names": [
+        "top",
+        "first",
+        "second",
+        "third",
+        "bottom"
+      ],
+      "deriver": null,
+      "label": "Three column 33\/34\/33",
+      "description": null,
+      "category": "Columns: 3",
+      "template": "layout--threecol-33-34-33",
+      "templatePath": "core\/modules\/layout_discovery\/layouts\/threecol_33_34_33",
+      "theme_hook": "layout__threecol_33_34_33",
+      "path": "core\/modules\/layout_discovery\/layouts\/threecol_33_34_33",
+      "library": "layout_discovery\/threecol_33_34_33",
+      "icon": null,
+      "icon_map": [
+        [
+          "top"
+        ],
+        [
+          "first",
+          "second",
+          "third"
+        ],
+        [
+          "bottom"
+        ]
+      ],
+      "regions": {
+        "top": {
+          "label": "Top"
+        },
+        "first": {
+          "label": "First"
+        },
+        "second": {
+          "label": "Second"
+        },
+        "third": {
+          "label": "Third"
+        },
+        "bottom": {
+          "label": "Bottom"
+        }
+      },
+      "default_region": "first",
+      "additional": [
+
+      ],
+      "id": "layout_threecol_33_34_33",
+      "class": "Drupal\\Core\\Layout\\LayoutDefault",
+      "provider": "layout_discovery",
+      "config_dependencies": {
+        "module": [
+          "layout_discovery"
+        ]
+      }
+    }
+  }
+]
