@@ -1112,7 +1112,41 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
   └───────────────────────────────────────────────────────────────────────┘
 */
 
-var AddBlock = function AddBlock() {
+var AddSection = function AddSection(_ref) {
+  var props = _objectWithoutProperties(_ref, []);
+
+  return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
+    'div',
+    { 'class': 'add-section' },
+    Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
+      'a',
+      {
+        'class': 'use-ajax',
+        'data-dialog-renderer': 'off_canvas',
+        'data-dialog-type': 'dialog',
+        href: '/layout_builder/choose/section/node/1/' + props.delta },
+      'Add Section'
+    )
+  );
+};
+
+var RemoveSection = function RemoveSection(_ref2) {
+  var props = _objectWithoutProperties(_ref2, []);
+
+  return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
+    'a',
+    {
+      className: 'use-ajax remove-section',
+      'data-dialog-renderer': 'off_canvas',
+      'data-dialog-type': 'dialog',
+      href: '/layout_builder/remove/section/node/1/' + props.delta },
+    'Remove section'
+  );
+};
+
+var AddBlock = function AddBlock(_ref3) {
+  var props = _objectWithoutProperties(_ref3, []);
+
   return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
     'div',
     { 'class': 'add-block' },
@@ -1122,27 +1156,27 @@ var AddBlock = function AddBlock() {
         className: 'use-ajax',
         'data-dialog-renderer': 'off_canvas',
         'data-dialog-type': 'dialog',
-        href: '/layout_builder/choose/block/node/1/2/top' },
+        href: '/layout_builder/choose/block/node/1/' + props.delta + '/top' },
       'Add Block'
     )
   );
 };
 
-var BlockWrapper = function BlockWrapper(_ref) {
-  var props = _objectWithoutProperties(_ref, []);
+var BlockWrapper = function BlockWrapper(_ref4) {
+  var props = _objectWithoutProperties(_ref4, []);
 
   return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])('div', { dangerouslySetInnerHTML: { __html: props.blockData.html } });
 };
 
-var Region = function Region(_ref2) {
-  var props = _objectWithoutProperties(_ref2, []);
+var Region = function Region(_ref5) {
+  var props = _objectWithoutProperties(_ref5, []);
 
   return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
     'div',
     {
       className: 'layout-builder--layout__region layout__region layout__region--' + props.regionName + ' ui-sortable',
       'data-region': props.regionName },
-    Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(AddBlock, null),
+    Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(AddBlock, { delta: props.delta }),
     Object.keys(props.blocks).map(function (blockID) {
       return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(BlockWrapper, {
         key: blockID,
@@ -1151,31 +1185,24 @@ var Region = function Region(_ref2) {
   );
 };
 
-var LayoutWrapper = function LayoutWrapper(_ref3) {
-  var props = _objectWithoutProperties(_ref3, []);
+var LayoutWrapper = function LayoutWrapper(_ref6) {
+  var props = _objectWithoutProperties(_ref6, []);
 
   return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
     'div',
     { className: 'layout-section' },
-    Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
-      'a',
-      {
-        className: 'use-ajax remove-section',
-        'data-dialog-renderer': 'off_canvas',
-        'data-dialog-type': 'dialog',
-        href: true },
-      'Remove section'
-    ),
+    Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(RemoveSection, { delta: props.delta }),
     Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
       'div',
       {
         className: 'layout-builder--layout layout ' + props.layoutDefinition.template,
-        'data-layout-delta': true,
-        'data-layout-update-url': true },
+        'data-layout-delta': props.delta,
+        'data-layout-update-url': '/layout_builder/move/block/node/1' },
       props.layoutDefinition.region_names.map(function (region) {
         return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(Region, {
           key: 'region-' + region,
           regionName: region,
+          delta: props.delta,
           blocks: _extends({}, props.blocks[region]) });
       })
     )
@@ -1186,12 +1213,13 @@ var AppContainer = function AppContainer() {
   return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(
     'div',
     { id: 'layout-builder' },
-    __WEBPACK_IMPORTED_MODULE_3__source_json___default.a.map(function (_ref4) {
-      var layout = _ref4.layout,
-          layout_definition = _ref4.layout_definition,
-          section = _ref4.section;
+    __WEBPACK_IMPORTED_MODULE_3__source_json___default.a.map(function (_ref7, index) {
+      var layout = _ref7.layout,
+          layout_definition = _ref7.layout_definition,
+          section = _ref7.section;
       return Object(__WEBPACK_IMPORTED_MODULE_1_preact__["h"])(LayoutWrapper, {
         key: layout,
+        delta: index,
         layoutDefinition: _extends({}, layout_definition) // eslint-disable-line camelcase
         , blocks: _extends({}, section) });
     })
@@ -1653,7 +1681,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, ".add-section {\n  width: 100%;\n  outline: 2px dashed #979797;\n  padding: 1.5em 0;\n  text-align: center;\n  margin-bottom: 1.5em;\n  transition: visually-hidden 2s ease-out, height 2s ease-in;\n}\n\n.layout-section {\n  margin-bottom: 1.5em;\n}\n\n.layout-section .layout-builder--layout__region {\n  outline: 2px dashed #2f91da;\n  padding: 1.5em 0;\n}\n\n.layout-section .layout-builder--layout__region .add-block {\n  text-align: center;\n}\n\n.layout-section .remove-section {\n  position: relative;\n  background: #ffffff center center / 16px 16px no-repeat;\n  border: 1px solid #cccccc;\n  box-sizing: border-box;\n  font-size: 1rem;\n  padding: 0;\n  height: 26px;\n  width: 26px;\n  white-space: nowrap;\n  text-indent: -9999px;\n  display: inline-block;\n  border-radius: 26px;\n  margin-left: -10px;\n}\n\n.layout-section .remove-section:hover {\n  \n}\n\n#drupal-off-canvas details.layout-selection {\n  background-color: transparent;\n}\n\n#drupal-off-canvas details.layout-selection summary {\n  margin-bottom: 1em;\n}\n\n#drupal-off-canvas details.layout-selection li {\n  display: block;\n  padding-bottom: 1em;\n}\n\n#drupal-off-canvas details.layout-selection li a {\n  display: block;\n  padding-top: 0.55em;\n}\n", ""]);
+exports.push([module.i, ".add-section {\n  width: 100%;\n  outline: 2px dashed #979797;\n  padding: 1.5em 0;\n  text-align: center;\n  margin-bottom: 1.5em;\n  transition: visually-hidden 2s ease-out, height 2s ease-in;\n}\n\n.layout-section {\n  margin-bottom: 1.5em;\n}\n\n.layout-section .layout-builder--layout__region {\n  outline: 2px dashed #2f91da;\n  padding: 1.5em 0;\n}\n\n.layout-section .layout-builder--layout__region .add-block {\n  text-align: center;\n}\n\n.layout-section .remove-section {\n  position: relative;\n  background: #ffffff center center / 16px 16px no-repeat;\n  border: 1px solid #cccccc;\n  box-sizing: border-box;\n  font-size: 1rem;\n  padding: 0;\n  height: 26px;\n  width: 26px;\n  white-space: nowrap;\n  text-indent: -9999px;\n  display: inline-block;\n  border-radius: 26px;\n  margin-left: -10px;\n}\n\n.layout-section .remove-section:hover {\n\n}\n\n#drupal-off-canvas details.layout-selection {\n  background-color: transparent;\n}\n\n#drupal-off-canvas details.layout-selection summary {\n  margin-bottom: 1em;\n}\n\n#drupal-off-canvas details.layout-selection li {\n  display: block;\n  padding-bottom: 1em;\n}\n\n#drupal-off-canvas details.layout-selection li a {\n  display: block;\n  padding-top: 0.55em;\n}\n\n/*\n * @file\n * Provides the layout styles for layout_onecol.\n */\n.layout--onecol .layout__region {\n  width: 100%;\n}\n\n/*\n * @file\n * Provides the layout styles for layout_threecol_25_50_25.\n *\n * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be\n * in before this can be marked as stable.\n */\n.layout--threecol-25-50-25 {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.layout--threecol-25-50-25 > .layout__region,\n.layout--threecol-25-50-25 > .layout__region--second {\n  flex: 0 1 100%;\n}\n\n@media screen and (min-width: 40em) {\n  .layout--threecol-25-50-25 > .layout__region--first,\n  .layout--threecol-25-50-25 > .layout__region--third {\n    flex: 0 1 25%;\n  }\n  .layout--threecol-25-50-25 > .layout__region--second {\n    flex: 0 1 50%;\n  }\n}\n\n/*\n * @file\n * Provides the layout styles for layout_threecol_33_34_33.\n *\n * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be\n * in before this can be marked as stable.\n */\n\n.layout--threecol-33-34-33 {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.layout--threecol-33-34-33 > .layout__region {\n  flex: 0 1 100%;\n}\n\n@media screen and (min-width: 40em) {\n  .layout--threecol-33-34-33 > .layout__region--first,\n  .layout--threecol-33-34-33 > .layout__region--third {\n    flex: 0 1 33%;\n  }\n  .layout--threecol-33-34-33 > .layout__region--second {\n    flex: 0 1 34%;\n  }\n}\n\n/*\n * @file\n * Provides the layout styles for layout_twocol.\n *\n * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be\n * in before this can be marked as stable.\n */\n\n.layout--twocol {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.layout--twocol > .layout__region {\n  flex: 0 1 100%;\n}\n\n@media screen and (min-width: 40em) {\n  .layout--twocol > .layout__region--first,\n  .layout--twocol > .layout__region--second {\n    flex: 0 1 50%;\n  }\n}\n\n/*\n * @file\n * Provides the layout styles for layout_twocol_bricks.\n *\n * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be\n * in before this can be marked as stable.\n */\n\n.layout--twocol-bricks {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.layout--twocol-bricks > .layout__region {\n  flex: 0 1 100%;\n}\n\n@media screen and (min-width: 40em) {\n  .layout--twocol-bricks > .layout__region--first-above,\n  .layout--twocol-bricks > .layout__region--second-above,\n  .layout--twocol-bricks > .layout__region--first-below,\n  .layout--twocol-bricks > .layout__region--second-below {\n    flex: 0 1 50%;\n  }\n}\n", ""]);
 
 // exports
 

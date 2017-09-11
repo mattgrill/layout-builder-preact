@@ -37,7 +37,7 @@
 }
 
 .layout-section .remove-section:hover {
-  
+
 }
 
 #drupal-off-canvas details.layout-selection {
@@ -56,4 +56,116 @@
 #drupal-off-canvas details.layout-selection li a {
   display: block;
   padding-top: 0.55em;
+}
+
+/*
+ * @file
+ * Provides the layout styles for layout_onecol.
+ */
+.layout--onecol .layout__region {
+  width: 100%;
+}
+
+/*
+ * @file
+ * Provides the layout styles for layout_threecol_25_50_25.
+ *
+ * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be
+ * in before this can be marked as stable.
+ */
+.layout--threecol-25-50-25 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.layout--threecol-25-50-25 > .layout__region,
+.layout--threecol-25-50-25 > .layout__region--second {
+  flex: 0 1 100%;
+}
+
+@media screen and (min-width: 40em) {
+  .layout--threecol-25-50-25 > .layout__region--first,
+  .layout--threecol-25-50-25 > .layout__region--third {
+    flex: 0 1 25%;
+  }
+  .layout--threecol-25-50-25 > .layout__region--second {
+    flex: 0 1 50%;
+  }
+}
+
+/*
+ * @file
+ * Provides the layout styles for layout_threecol_33_34_33.
+ *
+ * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be
+ * in before this can be marked as stable.
+ */
+
+.layout--threecol-33-34-33 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.layout--threecol-33-34-33 > .layout__region {
+  flex: 0 1 100%;
+}
+
+@media screen and (min-width: 40em) {
+  .layout--threecol-33-34-33 > .layout__region--first,
+  .layout--threecol-33-34-33 > .layout__region--third {
+    flex: 0 1 33%;
+  }
+  .layout--threecol-33-34-33 > .layout__region--second {
+    flex: 0 1 34%;
+  }
+}
+
+/*
+ * @file
+ * Provides the layout styles for layout_twocol.
+ *
+ * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be
+ * in before this can be marked as stable.
+ */
+
+.layout--twocol {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.layout--twocol > .layout__region {
+  flex: 0 1 100%;
+}
+
+@media screen and (min-width: 40em) {
+  .layout--twocol > .layout__region--first,
+  .layout--twocol > .layout__region--second {
+    flex: 0 1 50%;
+  }
+}
+
+/*
+ * @file
+ * Provides the layout styles for layout_twocol_bricks.
+ *
+ * @todo Using display: flex requires https://www.drupal.org/node/2842298 to be
+ * in before this can be marked as stable.
+ */
+
+.layout--twocol-bricks {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.layout--twocol-bricks > .layout__region {
+  flex: 0 1 100%;
+}
+
+@media screen and (min-width: 40em) {
+  .layout--twocol-bricks > .layout__region--first-above,
+  .layout--twocol-bricks > .layout__region--second-above,
+  .layout--twocol-bricks > .layout__region--first-below,
+  .layout--twocol-bricks > .layout__region--second-below {
+    flex: 0 1 50%;
+  }
 }
